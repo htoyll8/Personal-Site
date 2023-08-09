@@ -1,0 +1,16 @@
+{
+    "project1": {
+        "title": "Project 1",
+        "description": "Description of project 1...",
+        "image": "path-to-project1-image.jpg",
+        "github": "github-link-for-project1",
+        "arvix_pub": "arvix/pub-link-for-project1"
+    },
+    "project2": {
+        "title": "Project 2",
+        "description": "Description of project 2...",
+        "image": "path-to-project2-image.jpg",
+        "github": "github-link-for-project2",
+        "arvix_pub": "arvix/pub-link-for-project2"
+    }
+}

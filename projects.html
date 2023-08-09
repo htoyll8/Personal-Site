@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Embedding the JSON data -->
+    <script>
+        var projectsData = {
+            "project1": {
+                "title": "Reverse Sketching",
+                "description": "Programming by Example (PBE) is a technique that automatically generates computer programs that satisfy a set of examples. This approach holds significant potential to benefit those with limited programming experience. However, the inherent ambiguity of examples can often lead PBE systems to generate a vast array of candidate programs—sometimes tens or even hundreds. To prevent user overload, many PBE systems only present the top-ranked programs, which may limit users’ understanding of the solution space and hinder their selection of the most suitable program. In this paper, we hypothesize that providing an overview of the entire solution space can aid users in identifying desired programs, discovering superior alternatives, and developing a better understanding of the synthesizer’s behavior for improved future examples. To address this, we introduce ’reverse sketching’, a novel algorithm that employs equational anti-unification to generate partially-complete programs—’sketches’—that capture the syntactic structure and semantic equivalence of multiple solutions in the solution space. These sketches will serve as the foundation of an interactive interface, which will enable users to engage with the sketches and explore the solution space in a user-friendly manner.",
+                "image": "path-to-project1-image.jpg",
+                "github": "https://github.com/htoyll8/D-Caps",
+                "arvix_pub": "https://kilthub.cmu.edu/articles/conference_contribution/Reverse_Sketching/22277320"
+            },
+            "project2": {
+                "title": "Multi-user Program Synthesis",
+                "description": "Program synthesis is a research area focused on automatically generating computer programs that meet specific specifications or requirements. Despite its potential applications in various domains, including biological discovery and program repair, current program synthesis systems face a limitation: they primarily rely on input from a single user, neglecting the collaborative and distributed nature of software engineering. In this paper, we introduce a design experiment aimed at exploring the collaborative potential and effectiveness of multi-user program synthesis. This experiment is part of our ongoing research, and we plan to conduct it in the future.",
+                "image": "/img/multi-user-synthesis-2.png",
+                "github": "github-link-for-project2",
+                "arvix_pub": "arvix/pub-link-for-project2"
+            }
+        };
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 leading-relaxed text-gray-600 antialiased selection:bg-gray-300 selection:text-teal-500">
+    <main id="content" class="pt-24 lg:w-1/2 lg:py-24 pl-8">
+        <!-- Project Details -->
+        <div id="project-details">
+            <!-- This container will be populated dynamically based on the selected project -->
+        </div>
+    </main>
+
+    <!-- JavaScript to populate the project details -->
+    <script>
+        window.onload = function () {
+            // Get the 'project' query parameter from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectID = urlParams.get('project');
+
+            const projectData = projectsData[projectID];
+            if (projectData) {
+                // Populate the project details dynamically
+                const projectContainer = document.getElementById('project-details');
+                projectContainer.innerHTML = `
+                <div id="${projectID}" class="project-content">
+                    <h1 class="text-4xl font-bold tracking-tight text-gray-600 sm:text-5xl mb-4">${projectData.title}</h1>
+                    <p class="mb-4">${projectData.description}</p>
+                    <img src="${projectData.image}" alt="${projectData.title}" class="mb-4">
+                    <a href="${projectData.github}" class="text-teal-500 hover:text-teal-700 underline mb-2 block">GitHub</a>
+                    <a href="${projectData.arvix_pub}" class="text-teal-500 hover:text-teal-700 underline">Arvix/Pub</a>
+                </div>
+            `;
+            }
+        }
+    </script>
+</body>
+
+</html>
